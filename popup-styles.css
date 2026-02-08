@@ -1,0 +1,435 @@
+/* ==========================================
+   Research Paper Downloader - Popup Styles
+   ========================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --primary-color: #2563eb;
+    --primary-dark: #1e40af;
+    --secondary-color: #64748b;
+    --success-color: #10b981;
+    --error-color: #ef4444;
+    --warning-color: #f59e0b;
+    --background: #ffffff;
+    --surface: #f8fafc;
+    --border: #e2e8f0;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --radius: 8px;
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    background-color: var(--background);
+    color: var(--text-primary);
+    width: 420px;
+    min-height: 500px;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+/* ========== Header ========== */
+
+.header {
+    text-align: center;
+    margin-bottom: 20px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border);
+}
+
+.header h1 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.header .subtitle {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 0;
+}
+
+/* ========== Status Messages ========== */
+
+.status-container {
+    margin-bottom: 12px;
+}
+
+.status-message {
+    padding: 10px 12px;
+    border-radius: var(--radius);
+    font-size: 13px;
+    font-weight: 500;
+    animation: slideDown 0.3s ease-out;
+}
+
+.status-success {
+    background-color: #ecfdf5;
+    color: #065f46;
+    border-left: 3px solid var(--success-color);
+}
+
+.status-error {
+    background-color: #fef2f2;
+    color: #7f1d1d;
+    border-left: 3px solid var(--error-color);
+}
+
+.status-info {
+    background-color: #eff6ff;
+    color: #0c2340;
+    border-left: 3px solid var(--primary-color);
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== Buttons ========== */
+
+.btn {
+    padding: 12px 16px;
+    border: none;
+    border-radius: var(--radius);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    white-space: nowrap;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-dark);
+}
+
+.btn-secondary {
+    background-color: var(--surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+}
+
+.btn-secondary:hover {
+    background-color: #f1f5f9;
+    border-color: var(--primary-color);
+}
+
+.btn-large {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+    margin-bottom: 8px;
+}
+
+.btn-small {
+    padding: 8px 12px;
+    font-size: 12px;
+    flex: 1;
+    background-color: var(--surface);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    margin: 4px;
+}
+
+.btn-small:hover {
+    background-color: #f1f5f9;
+    border-color: var(--primary-color);
+}
+
+.btn-icon {
+    background: none;
+    border: none;
+    padding: 4px 8px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s;
+}
+
+.btn-icon:hover {
+    transform: scale(1.2);
+}
+
+/* ========== Actions Section ========== */
+
+.actions-section {
+    margin-bottom: 16px;
+}
+
+/* ========== Paper Info ========== */
+
+.paper-info {
+    background-color: var(--surface);
+    padding: 12px;
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    border-left: 3px solid var(--primary-color);
+}
+
+.info-item {
+    margin-bottom: 10px;
+    font-size: 12px;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+}
+
+.info-item label {
+    display: block;
+    color: var(--text-secondary);
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+.info-item code {
+    display: block;
+    background-color: white;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid var(--border);
+    word-break: break-all;
+    font-family: 'Courier New', monospace;
+    font-size: 11px;
+    color: var(--primary-color);
+    margin-bottom: 6px;
+}
+
+.info-item span {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+/* ========== Sources Section ========== */
+
+.sources-section {
+    margin-bottom: 16px;
+}
+
+.sources-section h3 {
+    font-size: 13px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    color: var(--text-primary);
+}
+
+.sources-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.source-btn {
+    padding: 12px 8px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    background-color: var(--surface);
+    color: var(--text-primary);
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+}
+
+.source-btn:hover {
+    background-color: white;
+    border-color: var(--primary-color);
+    color: var(--primary-color);
+    box-shadow: var(--shadow);
+}
+
+.source-icon {
+    font-size: 20px;
+}
+
+/* ========== Links Section ========== */
+
+.links-section {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+}
+
+/* ========== Rating Section ========== */
+
+.rating-section {
+    background-color: var(--surface);
+    padding: 12px;
+    border-radius: var(--radius);
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.rating-section p {
+    font-size: 12px;
+    margin-bottom: 8px;
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.rating-stars {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+.star {
+    font-size: 24px;
+    cursor: pointer;
+    transition: transform 0.2s;
+    opacity: 0.6;
+}
+
+.star:hover {
+    transform: scale(1.3);
+    opacity: 1;
+}
+
+#rating-thanks {
+    font-size: 12px;
+    color: var(--success-color);
+    font-weight: 600;
+}
+
+/* ========== Footer ========== */
+
+.footer {
+    text-align: center;
+    padding-top: 12px;
+    border-top: 1px solid var(--border);
+    margin-top: auto;
+    color: var(--text-secondary);
+    font-size: 11px;
+}
+
+/* ========== Responsive ========== */
+
+@media (max-width: 480px) {
+    body {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .sources-list {
+        grid-template-columns: 1fr;
+    }
+
+    .links-section {
+        flex-direction: column;
+    }
+
+    .btn-small {
+        flex: none;
+        width: 100%;
+        margin: 4px 0;
+    }
+}
+
+/* ========== Scrollbar Styling ========== */
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--secondary-color);
+}
+
+/* ========== History Section ========== */
+
+.history-item {
+    padding: 10px;
+    border-bottom: 1px solid var(--border);
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.history-item:hover {
+    background-color: var(--surface);
+}
+
+.history-item:last-child {
+    border-bottom: none;
+}
+
+/* ========== Source Grid Layout ========== */
+
+.source-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 10px;
+}
+
+.fallback-btn {
+    width: 100%;
+    margin: 0 !important;
+    /* Override any potential margins */
+    padding: 10px 8px !important;
+    font-size: 13px !important;
+    text-align: center;
+    justify-content: center;
+    height: 100%;
+}

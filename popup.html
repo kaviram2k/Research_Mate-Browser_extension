@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Paper Downloader Pro</title>
+    <link rel="stylesheet" href="popup-styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>📚 Research Paper DL</h1>
+            <p class="subtitle">One-Click Paper Download</p>
+        </div>
+
+        <!-- History Section -->
+        <div id="historySection" style="margin-top: 20px; border-top: 1px solid var(--border); padding-top: 15px;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                <h3 style="font-size: 13px; font-weight: 600; color: var(--text-secondary);">Recents</h3>
+                <button id="clearHistory"
+                    style="background: none; border: none; font-size: 11px; color: var(--text-secondary); cursor: pointer;">Clear</button>
+            </div>
+            <div id="historyList" style="max-height: 150px; overflow-y: auto;">
+                <!-- History Items will be injected here -->
+                <div style="padding: 10px; text-align: center; color: var(--text-secondary); font-size: 12px;">No recent
+                    history</div>
+            </div>
+        </div>
+
+        <!-- Status Messages -->
+        <div id="statusContainer" class="status-container" style="display: none;">
+            <div id="statusMessage" class="status-message"></div>
+        </div>
+
+        <!-- Main Input Section -->
+        <div class="manual-section" style="margin-bottom: 20px;">
+            <div style="margin-bottom: 12px;">
+                <label for="manualDoiInput"
+                    style="display: block; margin-bottom: 8px; font-weight: 600; color: var(--text-secondary);">Enter
+                    DOI or URL:</label>
+                <input type="text" id="manualDoiInput" placeholder="e.g. 10.1038/nature12345"
+                    style="width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: var(--radius); font-size: 14px;">
+            </div>
+
+            <button id="submitManualDoi" class="btn btn-primary btn-large">
+                <span class="icon">🔍</span>
+                <span>Searching</span>
+            </button>
+        </div>
+
+        <!-- Paper Title Display -->
+        <div id="titleSection"
+            style="display: none; margin-bottom: 15px; padding: 10px; background-color: var(--bg-hover); border-radius: var(--radius); border-left: 3px solid var(--primary-color);">
+            <p style="font-size: 11px; color: var(--text-secondary); margin-bottom: 4px; font-weight: 600;">PAPER TITLE
+            </p>
+            <p id="paperTitle" style="font-size: 13px; font-weight: 500; line-height: 1.4;">Fetching title...</p>
+        </div>
+
+        <!-- Fallback Options (Hidden by default) -->
+        <div id="fallbackSection"
+            style="display: none; margin-top: 15px; border-top: 1px solid var(--border); padding-top: 15px;">
+            <p style="font-size: 13px; color: var(--text-primary); margin-bottom: 10px; font-weight: 600;">
+                Select a source to download:</p>
+
+            <div class="source-grid">
+                <!-- 1. Anna's Archive -->
+                <button class="btn btn-secondary fallback-btn" data-base="https://annas-archive.li/scidb/">
+                    Anna's Archive
+                </button>
+                <!-- 2. DOI.org -->
+                <button class="btn btn-secondary fallback-btn" data-base="https://doi.org/">
+                    DOI.org
+                </button>
+                <!-- 3. IEEE -->
+                <button class="btn btn-secondary fallback-btn"
+                    data-base="https://ieeexplore.ieee.org/search/searchresult.jsp?newsearch=true&queryText=">
+                    IEEE Xplore
+                </button>
+                <!-- 4. arXiv -->
+                <button class="btn btn-secondary fallback-btn"
+                    data-base="https://arxiv.org/search/?searchtype=all&query=">
+                    arXiv
+                </button>
+                <!-- 5. ScienceDirect -->
+                <button class="btn btn-secondary fallback-btn" data-base="https://www.sciencedirect.com/search?qs=">
+                    ScienceDirect
+                </button>
+                <!-- 6. Springer -->
+                <button class="btn btn-secondary fallback-btn" data-base="https://link.springer.com/search?query=">
+                    Springer
+                </button>
+                <!-- 7. Google Scholar -->
+                <button class="btn btn-secondary fallback-btn" data-base="https://scholar.google.com/scholar?q=">
+                    Google Scholar
+                </button>
+                <!-- 8. Sci-Hub.ru -->
+                <button class="btn btn-secondary fallback-btn" data-base="https://sci-hub.ru/">
+                    Sci-Hub.ru
+                </button>
+                <!-- 9. Sci-Hub.box -->
+                <button class="btn btn-secondary fallback-btn" data-base="https://sci-hub.box/">
+                    Sci-Hub.box
+                </button>
+                <!-- 10. Sci-Hub.red -->
+                <button class="btn btn-secondary fallback-btn" data-base="https://sci-hub.red/">
+                    Sci-Hub.red
+                </button>
+                <!-- 11. Sci-Hub.st -->
+                <button class="btn btn-secondary fallback-btn" data-base="https://sci-hub.st/">
+                    Sci-Hub.st
+                </button>
+                <!-- 12. Sci-Hub.su -->
+                <button class="btn btn-secondary fallback-btn" data-base="https://sci-hub.su/">
+                    Sci-Hub.su
+                </button>
+                <!-- 13. Sci-Hub.in -->
+                <button class="btn btn-secondary fallback-btn" data-base="https://www.sci-hub.in/">
+                    Sci-Hub.in
+                </button>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <small>Research Paper Downloader v1.0.0</small>
+        </div>
+    </div>
+
+    <script src="popup.js"></script>
+</body>
+
+</html>

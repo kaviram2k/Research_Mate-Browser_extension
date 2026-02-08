@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Paper Downloader - Settings</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1e40af;
+            --success: #10b981;
+            --danger: #ef4444;
+            --gray: #64748b;
+            --light: #f8fafc;
+            --border: #e2e8f0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #f0f9ff 0%, #f8fafc 100%);
+            color: #1e293b;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.07);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 28px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px 20px;
+        }
+
+        .settings-group {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .settings-group:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .group-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .setting-item {
+            margin-bottom: 16px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .setting-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .setting-label {
+            flex: 1;
+        }
+
+        .setting-label label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 4px;
+            color: #1e293b;
+        }
+
+        .setting-label small {
+            display: block;
+            color: var(--gray);
+            font-size: 12px;
+        }
+
+        .setting-control {
+            display: flex;
+            gap: 8px;
+        }
+
+        /* Toggle Switch */
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .toggle-slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: var(--border);
+            transition: 0.3s;
+            border-radius: 26px;
+        }
+
+        .toggle-slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: 0.3s;
+            border-radius: 50%;
+        }
+
+        input:checked + .toggle-slider {
+            background-color: var(--primary);
+        }
+
+        input:checked + .toggle-slider:before {
+            transform: translateX(24px);
+        }
+
+        /* Select Dropdown */
+        select {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 14px;
+            background-color: white;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        select:hover {
+            border-color: var(--primary);
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Text Input */
+        input[type="text"],
+        input[type="url"] {
+            padding: 8px 12px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 14px;
+            width: 100%;
+            max-width: 250px;
+            transition: all 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="url"]:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* Buttons */
+        .button-group {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 10px 16px;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--light);
+            color: #1e293b;
+            border: 1px solid var(--border);
+        }
+
+        .btn-secondary:hover {
+            background-color: #f1f5f9;
+        }
+
+        .btn-danger {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .btn-danger:hover {
+            background-color: #dc2626;
+        }
+
+        .status-message {
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 16px;
+            display: none;
+        }
+
+        .status-message.success {
+            background-color: #ecfdf5;
+            color: #065f46;
+            border-left: 3px solid var(--success);
+            display: block;
+        }
+
+        .status-message.error {
+            background-color: #fef2f2;
+            color: #7f1d1d;
+            border-left: 3px solid var(--danger);
+            display: block;
+        }
+
+        .source-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 8px;
+        }
+
+        .source-item {
+            padding: 12px;
+            border: 2px solid var(--border);
+            border-radius: 6px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.2s;
+            background-color: white;
+        }
+
+        .source-item:hover {
+            border-color: var(--primary);
+            background-color: #f0f9ff;
+        }
+
+        .source-item.active {
+            border-color: var(--primary);
+            background-color: #eff6ff;
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .source-icon {
+            font-size: 24px;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .stats {
+            background-color: var(--light);
+            padding: 16px;
+            border-radius: 6px;
+            margin-top: 12px;
+        }
+
+        .stat-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 13px;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--primary);
+        }
+
+        .footer-info {
+            background-color: var(--light);
+            padding: 16px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: var(--gray);
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .footer-info a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .footer-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Research Paper Downloader</h1>
+            <p>Customize your settings</p>
+        </div>
+
+        <div class="content">
+            <div id="statusMessage" class="status-message"></div>
+
+            <!-- General Settings -->
+            <div class="settings-group">
+                <h2 class="group-title">⚙️ General Settings</h2>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <label for="autoDetect">Auto-detect DOI</label>
+                        <small>Automatically detect DOI when visiting research papers</small>
+                    </div>
+                    <div class="setting-control">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="autoDetect" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <label for="injectButtons">Inject Download Buttons</label>
+                        <small>Add download buttons directly to academic websites</small>
+                    </div>
+                    <div class="setting-control">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="injectButtons" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <label for="showNotifications">Show Notifications</label>
+                        <small>Display notifications when papers are downloaded</small>
+                    </div>
+                    <div class="setting-control">
+                        <label class="toggle-switch">
+                            <input type="checkbox" id="showNotifications" checked>
+                            <span class="toggle-slider"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Default Source -->
+            <div class="settings-group">
+                <h2 class="group-title">🔗 Default Download Source</h2>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <label>Choose your preferred source:</label>
+                        <small>Used when clicking "Download Paper" button</small>
+                    </div>
+                </div>
+
+                <div class="source-list">
+                    <div class="source-item active" data-source="scihub">
+                        <span class="source-icon">🔓</span>
+                        <span>Sci-Hub</span>
+                    </div>
+                    <div class="source-item" data-source="annas">
+                        <span class="source-icon">📚</span>
+                        <span>Anna's Archive</span>
+                    </div>
+                    <div class="source-item" data-source="arxiv">
+                        <span class="source-icon">🎓</span>
+                        <span>arXiv</span>
+                    </div>
+                    <div class="source-item" data-source="doi">
+                        <span class="source-icon">🔗</span>
+                        <span>DOI.org</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom Sources -->
+            <div class="settings-group">
+                <h2 class="group-title">🔧 Custom Sources</h2>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <label for="customSource1">Custom Source 1 URL</label>
+                        <small>Leave blank to disable. Use {doi} as placeholder.</small>
+                    </div>
+                    <div class="setting-control">
+                        <input type="url" id="customSource1" placeholder="https://example.com/{doi}">
+                    </div>
+                </div>
+
+                <div class="setting-item">
+                    <div class="setting-label">
+                        <label for="customSource2">Custom Source 2 URL</label>
+                        <small>Alternative custom source</small>
+                    </div>
+                    <div class="setting-control">
+                        <input type="url" id="customSource2" placeholder="https://example.com/{doi}">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Statistics -->
+            <div class="settings-group">
+                <h2 class="group-title">📊 Usage Statistics</h2>
+
+                <div class="stats">
+                    <div class="stat-item">
+                        <span>Total Downloads:</span>
+                        <span class="stat-value" id="totalDownloads">0</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Last Download:</span>
+                        <span class="stat-value" id="lastDownload">Never</span>
+                    </div>
+                    <div class="stat-item">
+                        <span>Favorite Source:</span>
+                        <span class="stat-value" id="favoriteSource">-</span>
+                    </div>
+                </div>
+
+                <div class="button-group" style="margin-top: 12px;">
+                    <button class="btn-secondary" id="resetStats">Clear Statistics</button>
+                </div>
+            </div>
+
+            <!-- Actions -->
+            <div class="settings-group">
+                <h2 class="group-title">🎯 Actions</h2>
+
+                <div class="button-group">
+                    <button class="btn-primary" id="saveSettings">💾 Save Settings</button>
+                    <button class="btn-secondary" id="resetSettings">↩️ Reset to Default</button>
+                    <button class="btn-secondary" id="contactSupport">📧 Support</button>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="footer-info">
+                <p>
+                    <strong>Research Paper Downloader Pro v1.0.0</strong>
+                </p>
+                <p style="margin-top: 8px;">
+                    Always respect copyright, institutional access policies, and local laws.
+                    <br>
+                    <a href="#">View Privacy Policy</a> | <a href="#">Report Issues</a>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script src="options.js"></script>
+</body>
+</html>
