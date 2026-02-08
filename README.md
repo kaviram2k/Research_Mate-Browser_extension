@@ -1,4 +1,4 @@
-# Research Paper Downloader Pro - Browser Extension
+# Research Mate- Browser Extension
 
 A powerful Chrome/Chromium browser extension that enables one-click downloading of research papers from IEEE, Springer, ScienceDirect, arXiv, and other academic sources.
 
